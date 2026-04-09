@@ -22,8 +22,9 @@ export function useGoogleAuth() {
       })
       login(response.data.user, response.data.jwt)
     } catch {
-      // Backend no disponible — mock de desarrollo con los datos del token de Google
-      if (import.meta.env.DEV) {
+      // Backend no disponible — mock con los datos del token de Google.
+      // Remover cuando el backend esté en producción (quitar VITE_MOCK_AUTH de las env vars).
+      if (import.meta.env.VITE_MOCK_AUTH === 'true') {
         const payload = decodeJwtPayload(credential)
         const user: User = {
           id: payload.sub,
