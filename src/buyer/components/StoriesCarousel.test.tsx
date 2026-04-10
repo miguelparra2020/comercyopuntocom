@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { StoriesCarousel } from './StoriesCarousel'
 
 describe('StoriesCarousel', () => {
-  it('renders all store names', () => {
+  it('renders store names', () => {
     render(<MemoryRouter><StoriesCarousel /></MemoryRouter>)
 
     expect(screen.getByText('Zara')).toBeInTheDocument()
@@ -16,7 +16,7 @@ describe('StoriesCarousel', () => {
     render(<MemoryRouter><StoriesCarousel /></MemoryRouter>)
 
     const links = screen.getAllByRole('link')
-    expect(links.length).toBe(7)
+    expect(links.length).toBe(7) // must match MOCK_STORIES.length in StoriesCarousel.tsx
   })
 
   it('each card links to the correct store slug', () => {

@@ -52,7 +52,7 @@ export function StoriesCarousel() {
         >
           <img
             src={story.logo}
-            alt={story.name}
+            alt=""
             style={{
               position: 'absolute',
               top: '6px',
