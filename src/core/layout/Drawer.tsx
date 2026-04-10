@@ -2,6 +2,35 @@ import { useNavigate } from 'react-router-dom'
 import { useUiStore } from '../ui/uiStore'
 import { useAuthStore } from '../auth/authStore'
 
+// TODO: replace with real data from stores/API
+const cartCount = 2
+const ordersCount = 6
+const notificationsCount = 3
+const chatCount = 1
+export const avatarBadgeCount = 5
+
+function Badge({ count }: { count: number }) {
+  if (count === 0) return null
+  return (
+    <span style={{
+      marginLeft: 'auto',
+      background: '#e05252',
+      color: '#fff',
+      borderRadius: '999px',
+      fontSize: '0.7rem',
+      fontWeight: 'bold',
+      minWidth: '18px',
+      height: '18px',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '0 5px',
+    }}>
+      {count}
+    </span>
+  )
+}
+
 export function Drawer() {
   const { isDrawerOpen, closeDrawer } = useUiStore()
   const { user, logout } = useAuthStore()
@@ -19,6 +48,14 @@ export function Drawer() {
     closeDrawer()
     navigate('/')
   }
+
+  const menuItems = [
+    { label: 'Mi perfil',      icon: '👤', path: '/profile',       badge: 0 },
+    { label: 'Carrito',        icon: '🛒', path: '/cart',          badge: cartCount },
+    { label: 'Mis pedidos',    icon: '📦', path: '/orders',        badge: ordersCount },
+    { label: 'Notificaciones', icon: '🔔', path: '/notifications', badge: notificationsCount },
+    { label: 'Chat',           icon: '💬', path: '/chat',          badge: chatCount },
+  ]
 
   return (
     <div
@@ -55,8 +92,31 @@ export function Drawer() {
       >
         {/* Header */}
         <div style={{ padding: '1.25rem 1rem', borderBottom: '1px solid #2a2a2a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#646cff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', flexShrink: 0 }}>
-            {user?.avatar ? <img src={user.avatar} alt={user.name} style={{ width: '100%', height: '100%', borderRadius: '50%' }} /> : '👤'}
+          <div style={{ position: 'relative', flexShrink: 0 }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#646cff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
+              {user?.avatar ? <img src={user.avatar} alt={user.name} style={{ width: '100%', height: '100%', borderRadius: '50%' }} /> : '👤'}
+            </div>
+            {avatarBadgeCount > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-4px',
+                right: '-4px',
+                background: '#e05252',
+                color: '#fff',
+                borderRadius: '999px',
+                fontSize: '0.65rem',
+                fontWeight: 'bold',
+                minWidth: '16px',
+                height: '16px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0 4px',
+                border: '2px solid #1e1e1e',
+              }}>
+                {avatarBadgeCount}
+              </span>
+            )}
           </div>
           <div>
             <div style={{ fontWeight: 'bold', fontSize: '0.95rem' }}>{user?.name}</div>
@@ -66,11 +126,7 @@ export function Drawer() {
 
         {/* Menu */}
         <div style={{ flex: 1 }}>
-          {[
-            { label: 'Mi perfil', icon: '👤', path: '/profile' },
-            { label: 'Carrito', icon: '🛒', path: '/cart' },
-            { label: 'Mis pedidos', icon: '📦', path: '/orders' },
-          ].map(({ label, icon, path }) => (
+          {menuItems.map(({ label, icon, path, badge }) => (
             <button
               key={label}
               onClick={() => handleNavigate(path)}
@@ -78,6 +134,7 @@ export function Drawer() {
             >
               <span>{icon}</span>
               <span>{label}</span>
+              <Badge count={badge} />
             </button>
           ))}
         </div>

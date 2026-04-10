@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../auth/authStore'
 import { useUiStore } from '../ui/uiStore'
+import { avatarBadgeCount } from './Drawer'
 
 const ROUTE_TITLES: Record<string, string> = {
   '/': 'Explorar',
@@ -67,7 +68,7 @@ export function Navbar() {
       <button
         onClick={handleAvatarClick}
         aria-label="Menú de usuario"
-        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, position: 'relative' }}
       >
         <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: isAuthenticated ? '#646cff' : '#444', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
           {user?.avatar
@@ -75,6 +76,27 @@ export function Navbar() {
             : <span style={{ fontSize: '1rem' }}>👤</span>
           }
         </div>
+        {isAuthenticated && avatarBadgeCount > 0 && (
+          <span style={{
+            position: 'absolute',
+            top: '-4px',
+            right: '-4px',
+            background: '#e05252',
+            color: '#fff',
+            borderRadius: '999px',
+            fontSize: '0.65rem',
+            fontWeight: 'bold',
+            minWidth: '16px',
+            height: '16px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0 4px',
+            border: '2px solid #1a1a1a',
+          }}>
+            {avatarBadgeCount}
+          </span>
+        )}
       </button>
     </header>
   )
