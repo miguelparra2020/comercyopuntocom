@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom'
 interface ProductCardProps {
   image: string
   storeIcon: string
+  to?: string
+  ariaLabel?: string
 }
 
-export function ProductCard({ image, storeIcon }: ProductCardProps) {
+export function ProductCard({ image, storeIcon, to = '/search-products', ariaLabel = 'Ver productos' }: ProductCardProps) {
   return (
     <Link
-      to="/search-products"
-      aria-label="Ver productos"
+      to={to}
+      aria-label={ariaLabel}
       style={{
         display: 'block',
         aspectRatio: '1 / 1.15',

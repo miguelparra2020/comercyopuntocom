@@ -27,7 +27,7 @@ describe('ServicesSection', () => {
   it('renders 4 product card links (mobile/desktop — not tablet)', () => {
     // jsdom default: window.innerWidth = 0 (treated as mobile → 4 cards shown)
     render(<MemoryRouter><ServicesSection /></MemoryRouter>)
-    const cardLinks = screen.getAllByRole('link', { name: /ver productos/i })
+    const cardLinks = screen.getAllByRole('link', { name: /ver servicios/i })
     expect(cardLinks.length).toBe(4)
   })
 
@@ -47,7 +47,7 @@ describe('ServicesSection', () => {
       await act(async () => {
         window.dispatchEvent(new Event('resize'))
       })
-      const cardLinks = screen.getAllByRole('link', { name: /ver productos/i })
+      const cardLinks = screen.getAllByRole('link', { name: /ver servicios/i })
       expect(cardLinks.length).toBe(3)
     })
   })

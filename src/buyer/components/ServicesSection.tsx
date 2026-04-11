@@ -107,6 +107,8 @@ export function ServicesSection() {
               key={service.id}
               image={service.image}
               storeIcon={service.storeIcon}
+              to="/search-services"
+              ariaLabel="Ver servicios"
             />
           ))}
         </div>
