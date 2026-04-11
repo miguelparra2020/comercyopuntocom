@@ -9,6 +9,7 @@ import { OrdersPage } from '../../buyer/pages/OrdersPage'
 import { NotificationsPage } from '../../buyer/pages/NotificationsPage'
 import { ChatPage } from '../../buyer/pages/ChatPage'
 import { ProjectsPage } from '../../saas/pages/ProjectsPage'
+import { SearchProductsPage } from '../../buyer/pages/SearchProductsPage'
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
     children: [
       // Public buyer routes
       { index: true, element: <HomePage /> },
+      { path: 'search-products', element: <SearchProductsPage /> },
 
       // Auth
       { path: 'login', element: <LoginPage /> },
