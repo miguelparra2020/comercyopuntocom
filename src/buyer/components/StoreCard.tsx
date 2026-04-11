@@ -24,7 +24,7 @@ export function StoreCard({ image, storeIcon, storeName }: StoreCardProps) {
     >
       <img
         src={image}
-        alt={storeName}
+        alt=""
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
       <div
@@ -49,7 +49,7 @@ export function StoreCard({ image, storeIcon, storeName }: StoreCardProps) {
       >
         <img
           src={storeIcon}
-          alt={`${storeName} icon`}
+          alt=""
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </div>

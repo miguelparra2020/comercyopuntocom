@@ -22,8 +22,8 @@ describe('StoreCard', () => {
   })
 
   it('renders two images (cover and store icon)', () => {
-    render(<MemoryRouter><StoreCard {...defaultProps} /></MemoryRouter>)
-    const images = screen.getAllByRole('img')
+    const { container } = render(<MemoryRouter><StoreCard {...defaultProps} /></MemoryRouter>)
+    const images = container.querySelectorAll('img')
     expect(images.length).toBe(2)
   })
 })
