@@ -70,6 +70,8 @@ describe('useStoreSearch', () => {
 
   it('clearFilters resets everything', () => {
     const { result } = renderHook(() => useStoreSearch())
+    act(() => { result.current.setPageSize(5) })
+    act(() => { result.current.setPage(2) })
     act(() => {
       result.current.setFilter('category', 'Ropa')
       result.current.setFilter('region', 'Antioquia')
@@ -78,6 +80,7 @@ describe('useStoreSearch', () => {
     expect(result.current.filteredStores).toHaveLength(10)
     expect(result.current.activeFilterCount).toBe(0)
     expect(result.current.filters.name).toBe('')
+    expect(result.current.currentPage).toBe(1)
   })
 
   it('availableCategories returns unique sorted categories', () => {
