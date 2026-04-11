@@ -43,7 +43,7 @@ export function ProductCardFull(props: ProductFull) {
       <div style={{ aspectRatio: '3/4', overflow: 'hidden', background: '#f5f5f5' }}>
         <img
           src={image}
-          alt=""
+          alt={name}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
       </div>
