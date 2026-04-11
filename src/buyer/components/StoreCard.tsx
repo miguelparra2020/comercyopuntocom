@@ -4,13 +4,15 @@ interface StoreCardProps {
   image: string
   storeIcon: string
   storeName: string
+  to?: string
+  ariaLabel?: string
 }
 
-export function StoreCard({ image, storeIcon, storeName }: StoreCardProps) {
+export function StoreCard({ image, storeIcon, storeName, to = '/search-stores', ariaLabel = 'Ver tiendas' }: StoreCardProps) {
   return (
     <Link
-      to="/search-stores"
-      aria-label="Ver tiendas"
+      to={to}
+      aria-label={ariaLabel}
       style={{
         display: 'block',
         aspectRatio: '16 / 9',
