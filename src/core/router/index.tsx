@@ -11,6 +11,7 @@ import { ChatPage } from '../../buyer/pages/ChatPage'
 import { ProjectsPage } from '../../saas/pages/ProjectsPage'
 import { SearchProductsPage } from '../../buyer/pages/SearchProductsPage'
 import { SearchStoresPage } from '../../buyer/pages/SearchStoresPage'
+import { SearchServicesPage } from '../../buyer/pages/SearchServicesPage'
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'search-products', element: <SearchProductsPage /> },
       { path: 'search-stores', element: <SearchStoresPage /> },
+      { path: 'search-services', element: <SearchServicesPage /> },
 
       // Auth
       { path: 'login', element: <LoginPage /> },

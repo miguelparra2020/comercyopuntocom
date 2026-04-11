@@ -1,6 +1,7 @@
 import { StoriesCarousel } from '../components/StoriesCarousel'
 import { ProductsSection } from '../components/ProductsSection'
 import { StoresSection } from '../components/StoresSection'
+import { ServicesSection } from '../components/ServicesSection'
 
 export function HomePage() {
   return (
@@ -8,6 +9,7 @@ export function HomePage() {
       <StoriesCarousel />
       <ProductsSection />
       <StoresSection />
+      <ServicesSection />
     </div>
   )
 }
