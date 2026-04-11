@@ -47,6 +47,9 @@ describe('LaboralOffersSection', () => {
       })
       const links = screen.getAllByRole('link', { name: /ver ofertas laborales/i })
       expect(links.length).toBe(4) // 1 CTA + 3 store cards
+      links.forEach(link => {
+        expect(link).toHaveAttribute('href', '/search-laboral-oferts')
+      })
     })
   })
 })
