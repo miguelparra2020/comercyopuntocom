@@ -25,6 +25,7 @@ describe('StoresSection', () => {
   })
 
   it('renders 4 store card links to /search-stores (mobile/desktop — not tablet)', () => {
+    // jsdom default: window.innerWidth = 0 (treated as mobile → 4 cards shown)
     render(<MemoryRouter><StoresSection /></MemoryRouter>)
     const storeLinks = screen.getAllByRole('link', { name: /ver tiendas/i })
     expect(storeLinks.length).toBe(4)
