@@ -67,6 +67,21 @@ describe('StoreSearchBar - desktop', () => {
     render(<StoreSearchBar {...BASE_PROPS} activeFilterCount={0} filters={{ ...BASE_FILTERS, name: '' }} />)
     expect(screen.queryByRole('button', { name: /limpiar/i })).not.toBeInTheDocument()
   })
+
+  it('renders city select on desktop', () => {
+    render(<StoreSearchBar {...BASE_PROPS} />)
+    expect(screen.getByRole('combobox', { name: /ciudad/i })).toBeInTheDocument()
+  })
+
+  it('city select is disabled when no region is selected', () => {
+    render(<StoreSearchBar {...BASE_PROPS} filters={{ ...BASE_FILTERS, region: '' }} />)
+    expect(screen.getByRole('combobox', { name: /ciudad/i })).toBeDisabled()
+  })
+
+  it('city select is enabled when a region is selected', () => {
+    render(<StoreSearchBar {...BASE_PROPS} filters={{ ...BASE_FILTERS, region: 'Antioquia' }} />)
+    expect(screen.getByRole('combobox', { name: /ciudad/i })).not.toBeDisabled()
+  })
 })
 
 describe('StoreSearchBar - mobile', () => {
@@ -101,5 +116,10 @@ describe('StoreSearchBar - mobile', () => {
   it('shows badge count on Filtros button when activeFilterCount > 0', () => {
     render(<StoreSearchBar {...BASE_PROPS} activeFilterCount={3} />)
     expect(screen.getByText('3')).toBeInTheDocument()
+  })
+
+  it('does not render region select on mobile', () => {
+    render(<StoreSearchBar {...BASE_PROPS} />)
+    expect(screen.queryByRole('combobox', { name: /región/i })).not.toBeInTheDocument()
   })
 })
