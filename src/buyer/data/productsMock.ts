@@ -21,7 +21,7 @@ export const MOCK_PRODUCTS: ProductFull[] = [
     id: '1',
     name: 'Teclado Mecánico Pro RGB',
     description: 'Interruptores Gateron personalizados, retroiluminación RGB por tecla, construcción en aluminio.',
-    price: 99589000,
+    price: 995890,
     image: 'https://picsum.photos/seed/prod-kb/300/400',
     badge: 'NUEVO',
     category: 'Electrónica',
