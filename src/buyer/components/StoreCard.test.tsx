@@ -26,4 +26,16 @@ describe('StoreCard', () => {
     const images = container.querySelectorAll('img')
     expect(images.length).toBe(2)
   })
+
+  it('renders the cover image with the correct src', () => {
+    const { container } = render(<MemoryRouter><StoreCard {...defaultProps} /></MemoryRouter>)
+    const images = container.querySelectorAll('img')
+    expect(images[0]).toHaveAttribute('src', defaultProps.image)
+  })
+
+  it('renders the store icon with the correct src', () => {
+    const { container } = render(<MemoryRouter><StoreCard {...defaultProps} /></MemoryRouter>)
+    const images = container.querySelectorAll('img')
+    expect(images[1]).toHaveAttribute('src', defaultProps.storeIcon)
+  })
 })
