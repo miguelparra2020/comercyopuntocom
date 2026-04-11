@@ -12,6 +12,7 @@ import { ProjectsPage } from '../../saas/pages/ProjectsPage'
 import { SearchProductsPage } from '../../buyer/pages/SearchProductsPage'
 import { SearchStoresPage } from '../../buyer/pages/SearchStoresPage'
 import { SearchServicesPage } from '../../buyer/pages/SearchServicesPage'
+import { SearchLaboralOfertsPage } from '../../buyer/pages/SearchLaboralOfertsPage'
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
       { path: 'search-products', element: <SearchProductsPage /> },
       { path: 'search-stores', element: <SearchStoresPage /> },
       { path: 'search-services', element: <SearchServicesPage /> },
+      { path: 'search-laboral-oferts', element: <SearchLaboralOfertsPage /> },
 
       // Auth
       { path: 'login', element: <LoginPage /> },
