@@ -32,6 +32,7 @@ export function SearchStoresPage() {
           padding: isMobile ? '1rem' : '1.5rem',
         }}
       >
+        {/* Bienvenida */}
         <h1
           style={{
             fontSize: isMobile ? '1.2rem' : '1.5rem',
@@ -46,6 +47,7 @@ export function SearchStoresPage() {
           Encuentra las mejores tiendas verificadas cerca de ti.
         </p>
 
+        {/* Barra de filtros */}
         <StoreSearchBar
           filters={filters}
           setFilter={setFilter}
@@ -63,6 +65,7 @@ export function SearchStoresPage() {
           </p>
         ) : (
           <>
+            {/* Paginación arriba */}
             <PaginationBar
               currentPage={currentPage}
               totalPages={totalPages}
@@ -71,6 +74,7 @@ export function SearchStoresPage() {
               onPageSizeChange={setPageSize}
             />
 
+            {/* Grid de tiendas */}
             <div
               style={{
                 display: 'grid',
@@ -84,6 +88,7 @@ export function SearchStoresPage() {
               ))}
             </div>
 
+            {/* Paginación abajo */}
             <PaginationBar
               currentPage={currentPage}
               totalPages={totalPages}
@@ -95,6 +100,7 @@ export function SearchStoresPage() {
         )}
       </div>
 
+      {/* Drawer de filtros mobile */}
       <StoreFilterDrawer
         isOpen={isFilterDrawerOpen}
         onClose={() => setIsFilterDrawerOpen(false)}
