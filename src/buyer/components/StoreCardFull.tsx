@@ -5,10 +5,8 @@ const BADGE_COLORS: Record<'VERIFICADA' | 'NUEVA', { bg: string; color: string }
   NUEVA:      { bg: '#646cff', color: '#fff' },
 }
 
-export function StoreCardFull({
-  name, description, coverImage, logo, badge,
-  region, city, rating, reviewCount,
-}: StoreFull) {
+export function StoreCardFull(props: StoreFull) {
+  const { name, description, coverImage, logo, badge, region, city, rating, reviewCount } = props
   return (
     <div
       style={{
