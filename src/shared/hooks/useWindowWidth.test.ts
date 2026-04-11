@@ -1,8 +1,18 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { useWindowWidth } from './useWindowWidth'
 
 describe('useWindowWidth', () => {
+  let originalInnerWidth: number
+
+  beforeEach(() => {
+    originalInnerWidth = window.innerWidth
+  })
+
+  afterEach(() => {
+    Object.defineProperty(window, 'innerWidth', { writable: true, value: originalInnerWidth })
+  })
+
   it('returns the current window.innerWidth', () => {
     Object.defineProperty(window, 'innerWidth', { writable: true, value: 1280 })
     const { result } = renderHook(() => useWindowWidth())
