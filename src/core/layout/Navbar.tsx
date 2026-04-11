@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../auth/authStore'
 import { useUiStore } from '../ui/uiStore'
 import { avatarBadgeCount } from './Drawer'
@@ -59,9 +59,15 @@ export function Navbar() {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-        <div style={{ background: '#646cff', color: 'white', fontWeight: 'bold', padding: '0.2rem 0.5rem', borderRadius: '6px', fontSize: '0.9rem' }}>
-          C
-        </div>
+        <Link
+          to="/"
+          aria-label="Comercyo"
+          style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+        >
+          <div style={{ background: '#646cff', color: 'white', fontWeight: 'bold', padding: '0.2rem 0.5rem', borderRadius: '6px', fontSize: '0.9rem' }}>
+            C
+          </div>
+        </Link>
         <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>{title}</span>
       </div>
 
