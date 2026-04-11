@@ -89,8 +89,10 @@ describe('useProductSearch', () => {
     expect(result.current.activeFilterCount).toBe(2)
   })
 
-  it('clearFilters resets everything', () => {
+  it('clearFilters resets everything including currentPage', () => {
     const { result } = renderHook(() => useProductSearch())
+    act(() => { result.current.setPageSize(5) })  // make 2 pages available
+    act(() => { result.current.setPage(2) })
     act(() => {
       result.current.setFilter('category', 'Ropa')
       result.current.setFilter('region', 'Antioquia')
@@ -99,6 +101,7 @@ describe('useProductSearch', () => {
     expect(result.current.filteredProducts).toHaveLength(10)
     expect(result.current.activeFilterCount).toBe(0)
     expect(result.current.filters.name).toBe('')
+    expect(result.current.currentPage).toBe(1)
   })
 
   it('availableCategories returns unique sorted categories', () => {
@@ -112,5 +115,17 @@ describe('useProductSearch', () => {
     const { result } = renderHook(() => useProductSearch())
     act(() => { result.current.setFilter('region', 'Antioquia') })
     expect(result.current.availableCities).toEqual(['Envigado', 'Medellín'])
+  })
+
+  it('applies multiple filters simultaneously (region + category)', () => {
+    const { result } = renderHook(() => useProductSearch())
+    act(() => {
+      result.current.setFilter('region', 'Antioquia')
+      result.current.setFilter('category', 'Electrónica')
+    })
+    expect(result.current.filteredProducts).toHaveLength(2)
+    expect(result.current.filteredProducts.every(
+      p => p.region === 'Antioquia' && p.category === 'Electrónica'
+    )).toBe(true)
   })
 })
