@@ -53,6 +53,7 @@ export function Drawer() {
     { label: 'Mi perfil',      icon: '👤', path: '/profile',       badge: 0 },
     { label: 'Carrito',        icon: '🛒', path: '/cart',          badge: cartCount },
     { label: 'Mis pedidos',    icon: '📦', path: '/orders',        badge: ordersCount },
+    { label: 'Mis facturas',   icon: '🧾', path: '/invoices',      badge: 0 },
     { label: 'Notificaciones', icon: '🔔', path: '/notifications', badge: notificationsCount },
     { label: 'Chat',           icon: '💬', path: '/chat',          badge: chatCount },
   ]

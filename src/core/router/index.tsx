@@ -6,6 +6,7 @@ import { HomePage } from '../../buyer/pages/HomePage'
 import { ProfilePage } from '../../buyer/pages/ProfilePage'
 import { CartPage } from '../../buyer/pages/CartPage'
 import { OrdersPage } from '../../buyer/pages/OrdersPage'
+import { InvoicesPage } from '../../buyer/pages/InvoicesPage'
 import { NotificationsPage } from '../../buyer/pages/NotificationsPage'
 import { ChatPage } from '../../buyer/pages/ChatPage'
 import { ProjectsPage } from '../../saas/pages/ProjectsPage'
@@ -36,6 +37,7 @@ export const router = createBrowserRouter([
           { path: 'profile', element: <ProfilePage /> },
           { path: 'cart', element: <CartPage /> },
           { path: 'orders', element: <OrdersPage /> },
+          { path: 'invoices', element: <InvoicesPage /> },
           { path: 'notifications', element: <NotificationsPage /> },
           { path: 'chat', element: <ChatPage /> },
           { path: 'saas/projects', element: <ProjectsPage /> },

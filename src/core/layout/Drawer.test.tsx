@@ -29,6 +29,7 @@ describe('Drawer', () => {
     expect(screen.getByText('Mi perfil')).toBeInTheDocument()
     expect(screen.getByText('Carrito')).toBeInTheDocument()
     expect(screen.getByText('Mis pedidos')).toBeInTheDocument()
+    expect(screen.getByText('Mis facturas')).toBeInTheDocument()
   })
 
   it('calls closeDrawer when backdrop is clicked', async () => {
