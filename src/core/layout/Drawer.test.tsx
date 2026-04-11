@@ -32,6 +32,15 @@ describe('Drawer', () => {
     expect(screen.getByText('Mis facturas')).toBeInTheDocument()
   })
 
+  it('shows badge 2 on Mis facturas', () => {
+    vi.mocked(useUiStore).mockReturnValue({ isDrawerOpen: true, closeDrawer: vi.fn() } as any)
+    vi.mocked(useAuthStore).mockReturnValue({ user: mockUser, logout: vi.fn() } as any)
+
+    render(<MemoryRouter><Drawer /></MemoryRouter>)
+    const button = screen.getByText('Mis facturas').closest('button')!
+    expect(button.querySelector('span:last-child')).toHaveTextContent('2')
+  })
+
   it('calls closeDrawer when backdrop is clicked', async () => {
     const closeDrawer = vi.fn()
     vi.mocked(useUiStore).mockReturnValue({ isDrawerOpen: true, closeDrawer } as any)
